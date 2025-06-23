@@ -1,0 +1,990 @@
+/* リセットCSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* カスタムプロパティ */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #34495e;
+    --accent-color: #3498db;
+    --text-color: #2c3e50;
+    --light-green: #f0f8f0;
+    --medium-green: #e8f5e8;
+    --white: #ffffff;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+/* 基本スタイル */
+body {
+    font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    overflow-x: hidden;
+    background-color: var(--light-green);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* 手書き風フォントスタイル */
+.handwritten-name {
+    font-family: 'Kalam', cursive;
+    font-weight: 400;
+    position: relative;
+    display: inline-block;
+    color: var(--primary-color);
+}
+
+.handwritten-name::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--primary-color);
+    border-radius: 3px;
+    transform: rotate(-1deg);
+    opacity: 0.8;
+}
+
+/* 手書き風アンダーバーの追加スタイル */
+.handwritten-underline {
+    position: relative;
+    display: inline-block;
+}
+
+.handwritten-underline::before {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: -2px;
+    right: -2px;
+    height: 2px;
+    background: var(--primary-color);
+    border-radius: 1px;
+    transform: rotate(0.5deg);
+    opacity: 0.9;
+}
+
+/* ヘッダー */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 1rem 0;
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.logo .handwritten-name {
+    font-size: 1.8rem;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+    margin-left: auto;
+    margin-right: -5rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: #2d5016;
+    font-weight: 500;
+    transition: var(--transition);
+    position: relative;
+    padding: 0.5rem 1rem;
+}
+
+nav a:hover {
+    color: #1a3d0f;
+}
+
+nav a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    background: rgba(45, 80, 22, 0.1);
+    transition: all 0.3s ease;
+    border-radius: 4px;
+}
+
+nav a:hover::before {
+    width: 100%;
+    height: 100%;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #2d5016;
+    transition: var(--transition);
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+/* メインコンテンツ */
+main {
+    margin-top: 80px;
+}
+
+section {
+    padding: 5rem 0;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* 自己紹介セクション */
+.hero {
+    background: var(--medium-green);
+    color: var(--text-color);
+    text-align: center;
+    padding: 8rem 0;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.hero-text {
+    text-align: left;
+    max-width: 100%;
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    font-weight: 300;
+    text-align: center;
+}
+
+.hero-text h1 .handwritten-name {
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero-text h2 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: var(--accent-color);
+    font-weight: 400;
+    text-align: center;
+}
+
+.hero-text p {
+    font-size: 1.1rem;
+    line-height: 2;
+    margin-bottom: 2rem;
+    text-align: center;
+    padding-top: 5px;
+}
+
+.hero-text .highlight {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.english-description {
+    text-align: left;
+    margin-top: 3rem;
+    margin-left: -8rem;
+}
+
+.description-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.text-content {
+    flex: 1;
+}
+
+.sns-icons {
+    display: flex;
+    flex-direction: row;
+    gap: -1rem;
+    margin-top: 0.5rem;
+}
+
+.sns-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: var(--medium-green);
+    border-radius: 50%;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 1.8rem;
+    transition: var(--transition);
+}
+
+.sns-icon:hover {
+    background: var(--light-green);
+    transform: translateY(-2px);
+}
+
+.english-description p {
+    font-size: 0.9rem;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+    color: var(--secondary-color);
+    text-align: left;
+}
+
+.profile-image {
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    margin: 0 -6rem 0 auto;
+    border: 4px solid var(--white);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    position: relative;
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.profile-image img.active {
+    opacity: 1;
+}
+
+/* コンセプトセクション */
+.concept {
+    background: var(--medium-green);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 3.5rem;
+    margin-bottom: 3rem;
+    color: var(--primary-color);
+    position: relative;
+    font-family: 'Kalam', cursive;
+    font-weight: 400;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 3px;
+    background: var(--primary-color);
+    border-radius: 2px;
+    opacity: 0.8;
+}
+
+.concept-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "slideshow text";
+    gap: 10rem;
+    align-items: center;
+    max-width: 1800px;
+    margin: 0 auto;
+}
+
+.concept-slideshow {
+    grid-area: slideshow;
+    width: 100%;
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    background: linear-gradient(135deg, #f0f8f0, #e0f0e0);
+}
+
+.concept-slideshow .slide {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transform: scale(1.1) translateX(30px);
+    transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+}
+
+.concept-slideshow .slide.active {
+    opacity: 1 !important;
+    transform: scale(1) translateX(0) !important;
+    z-index: 2;
+}
+
+.concept-slideshow .slide.prev {
+    opacity: 0;
+    transform: scale(0.9) translateX(-30px);
+    z-index: 1;
+}
+
+.concept-slideshow .slide:first-child {
+    opacity: 1;
+    transform: scale(1) translateX(0);
+}
+
+.concept-text {
+    grid-area: text;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    text-align: center;
+    padding: 0;
+}
+
+.concept-text p {
+    margin-bottom: 1.5rem;
+}
+
+.concept-text .highlight {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.english-concept {
+    margin-top: 2rem;
+    text-align: right;
+    font-size: 1rem;
+    line-height: 1.3;
+    color: var(--secondary-color);
+    padding-right: 0;
+    margin-right: -8rem;
+}
+
+.english-concept p {
+    margin-bottom: 0.4rem;
+}
+
+.concept-image {
+    width: 100%;
+    height: 400px;
+    background: var(--light-green);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: var(--secondary-color);
+}
+
+/* ワークプロセスセクション */
+.process {
+    background: var(--light-green);
+}
+
+.process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem;
+    margin-top: 3rem;
+    max-width: 2000px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+}
+
+.process-item {
+    background: var(--white);
+    padding: 4rem 1rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    width: 100%;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.process-item h3 {
+    font-size: 1.1rem;
+}
+
+.process-item:hover {
+    box-shadow: var(--shadow);
+}
+
+.process-icon {
+    width: 100px;
+    height: 100px;
+    background: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    color: var(--white);
+}
+
+.process-icon img {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+}
+
+.process-item h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.process-item p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/* 作品集セクション */
+.portfolio {
+    background: var(--medium-green);
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.portfolio-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.portfolio-item:hover {
+    transform: scale(1.05);
+}
+
+.portfolio-image {
+    width: 100%;
+    height: 250px;
+    background: var(--light-green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: var(--secondary-color);
+    transition: var(--transition);
+}
+
+.portfolio-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(44, 62, 80, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.portfolio-item:hover .portfolio-overlay {
+    opacity: 1;
+}
+
+.portfolio-overlay h3 {
+    color: var(--white);
+    font-size: 1.2rem;
+}
+
+.portfolio-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
+/* モーダル */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 2000;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.modal.active {
+    opacity: 1;
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 98%;
+    max-height: 98%;
+    background: transparent;
+    border-radius: 15px;
+    padding: 0.5rem;
+}
+
+.modal-image-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.modal-image {
+    flex: 1;
+    text-align: center;
+}
+
+.modal-image img {
+    max-width: 100%;
+    max-height: 90vh;
+    border-radius: 10px;
+    object-fit: contain;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.modal-nav {
+    background: rgba(255, 255, 255, 0.8);
+    color: var(--primary-color);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-nav:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: scale(1.1);
+}
+
+.modal-nav:disabled {
+    background: rgba(204, 204, 204, 0.8);
+    cursor: not-allowed;
+    transform: none;
+}
+
+.modal-info {
+    text-align: center;
+}
+
+.modal-info h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.modal-info p {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.modal-counter {
+    font-size: 1.1rem;
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 2rem;
+    color: var(--white);
+    cursor: pointer;
+    background: none;
+    border: none;
+    z-index: 2001;
+}
+
+/* お問い合わせセクション */
+.contact {
+    background: var(--medium-green);
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+}
+
+.contact-form {
+    padding: 3rem;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 1.2rem;
+    border: 2px solid var(--light-green);
+    border-radius: 5px;
+    font-size: 1.2rem;
+    transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+.form-group textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+.submit-btn {
+    background: var(--accent-color);
+    color: var(--white);
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.submit-btn:hover {
+    background: var(--primary-color);
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.social-link {
+    width: 50px;
+    height: 50px;
+    background: var(--medium-green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.social-link:hover {
+    background: var(--light-green);
+    transform: translateY(-3px);
+}
+
+/* フッター */
+footer {
+    background: var(--primary-color);
+    color: var(--white);
+    text-align: center;
+    padding: 2rem 0;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    nav ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--light-green);
+        flex-direction: column;
+        padding: 1rem;
+        box-shadow: var(--shadow);
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    .hero-content,
+    .concept-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .profile-image {
+        width: 200px;
+        height: 200px;
+    }
+
+    .process-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 4rem 0;
+    }
+
+    .hero-text h1 {
+        font-size: 1.5rem;
+    }
+
+    .hero-text h2 {
+        font-size: 1.2rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .profile-image {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+/* アニメーション */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+/* ローディングアニメーション */
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--light-green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+}
+
+.loading.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid var(--medium-green);
+    border-top: 3px solid var(--accent-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.hero-background {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+}
+
+.hero-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.3s ease;
+}
+
+.hero-background:hover img {
+    transform: scale(1.05);
+}
+
+/* アニマルポートフォリオ用の特別なスタイル */
+.animal-portfolio .modal-image img {
+    max-height: 98vh;
+    border-radius: 5px;
+}
+
+/* アニマルモーダル用の特別なスタイル */
+.animal-modal .modal-image img {
+    max-height: 95vh;
+    max-width: 100vw;
+    border-radius: 5px;
+    object-fit: contain;
+}
+
+/* ファンタジーモーダル用の特別なスタイル */
+.fantasy-modal .modal-image img {
+    max-height: 100vh;
+    max-width: 100vw;
+    border-radius: 0;
+    object-fit: contain;
+    width: 100vw;
+    height: 100vh;
+}
+
+.contact-form input,
+.contact-form textarea {
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    background: #fff;
+    transition: border-color 0.3s;
+    font-size: 1.2rem;
+    padding: 1.2rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--accent-color);
+    outline: none;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    font-size: 0.95rem;
+    color: #bbb;
+    opacity: 1;
+}
+
+.contact-form .submit-btn {
+    display: block;
+    margin: 2rem auto 0 auto;
+} 
